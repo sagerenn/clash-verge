@@ -13,6 +13,7 @@ env:
 
 jobs:
   release:
+    permissions: write-all
     strategy:
       fail-fast: false
       matrix:
@@ -41,7 +42,7 @@ jobs:
           node-version: 16
 
       - name: Delete current release assets
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-20.04'
         uses: mknejp/delete-release-assets@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
